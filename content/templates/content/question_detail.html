@@ -1,0 +1,21 @@
+{% extends 'content/base.html' %}
+{% block body %}
+<div class="row">
+
+<div class="col-sm-8 blog-main">
+
+  <div class="blog-post">
+    <h2 class="blog-post-title">{{ questions.question_text }}</h2>
+    <img src="{{ questions.question_img.url }}" alt='Картинка поста' class="img-rounded" width="{{ questions.width_img }}" height="{{ questions.height_img }}">
+    {{ questions.question_answer|safe }}
+  </div>
+
+</div><!-- /.blog-main -->
+
+<div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+  <div class="sidebar-module sidebar-module-inset">
+    <h4>About</h4>
+    <p>Etiam porta <em>sem malesuada magna</em> mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>
+  </div>
+</div><!-- /.blog-sidebar -->
+{% endblock %}
