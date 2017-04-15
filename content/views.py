@@ -6,10 +6,14 @@ from django.views.generic import (View, TemplateView, ListView,
 class IndexView(TemplateView):
 	template_name = 'content/index.html'
 
-class HomeView(ListView):
-	queryset = Posts.objects.order_by('-pub_date')
+class HomeView(TemplateView):
 	template_name = 'content/home.html'
+
+class PostListView(ListView):
+	queryset = Posts.objects.order_by('-pub_date')
+	template_name = 'content/posts.html'
 	context_object_name = 'all_posts'
+	paginate_by = 5
 
 class PostView(DetailView):
 	model = Posts
@@ -19,7 +23,11 @@ class QuestionsView(ListView):
 	queryset = Questions.objects.order_by('-pub_date')
 	context_object_name = 'all_questions'
 	template_name = 'content/questions.html'
+	paginate_by = 10
 
 class QuestionDetailView(DetailView):
 	model = Questions
 	template_name = 'content/question_detail.html'
+
+class SolarView(TemplateView):
+	template_name = 'content/solar.html'

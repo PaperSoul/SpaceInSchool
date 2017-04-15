@@ -1,67 +1,46 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
   <head>
+  {% load static %}
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="../../favicon.ico">
+    <link rel="icon" href="{% static 'content/favicon.ico' %}">
 
-    <title>Space in school!</title>
-    {% load static %}
+    <title>{% block title %}{% endblock %}</title>
+    
     <!-- Bootstrap core CSS -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="{% static 'content/blog.css' %}" rel="stylesheet">
-
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
+    <link href="{% static 'content/css/jumbotron-narrow.css' %} " rel="stylesheet">
   </head>
 
   <body>
 
-    <div class="blog-masthead">
-      <div class="container">
-        <nav class="blog-nav">
-          <a class="blog-nav-item {% block home-active %}{% endblock %}" href="{% url 'content:home' %}">Главная</a>
-          <a class="blog-nav-item {% block questions-active %}{% endblock %}" href="{% url 'content:questions' %}">Вопросы от школьников</a>
+    <div class="container">
+      <div class="header clearfix">
+        <h3 class="text-muted"><a href="{% url 'content:index' %}">Space In School</a></h3>
+        <nav>
+          <ul class="nav pull-right masthead-nav">
+            <li role="presentation" class="{% block home-active %}{% endblock %}"><a href="{% url 'content:home' %}">Главная</a></li>
+            <li role="presentation" class="{% block posts-active %}{% endblock %}"><a href="{% url 'content:post-list' %}">Статьи</a></li>
+            <li role="presentation" class="{% block questions-active %}{% endblock %}"><a href="{% url 'content:questions' %}">Вопросы</a></li>
+            <li role="presentation"><a href="{% url 'content:solar' %}">Солнечная система</a></li>
+          </ul>
         </nav>
       </div>
-    </div>
-
-    <div class="container">
-
-      <div class="blog-header">
-        <h1 class="blog-title">Space In School!</h1>
-        <p class="lead blog-description">Some text.</p>
-        <hr>
-      </div>
-
       {% block body %}
-        {% endblock %}
-      </div><!-- /.row -->
+      {% endblock %}
+      <footer class="footer">
+        <p>&copy; 2016 Company, Inc.</p>
+      </footer>
+    </div> <!-- /container -->
 
-    </div><!-- /.container -->
+    <script src="{% static 'content/js/script.js' %}"></script>
 
-    <footer class="blog-footer">
-      <p>&copy; <a href="{% url 'content:index'%}">Space in school</a> 2017.</p>
-      <p>
-        <a href="#">^Наверх^</a>
-      </p>
-    </footer>
-
-
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   </body>
 </html>

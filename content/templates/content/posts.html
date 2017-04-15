@@ -1,0 +1,20 @@
+{% extends 'content/base.html '%}
+{% block title %}Статьи{% endblock %}
+{% block posts-active %}active{% endblock %}
+{% block body %}
+<div class="post">
+	{% for post in all_posts %}
+		<h1>{{ post.title }}</h1>
+		<div class="mainImg">
+			<img src="{{ post.post_img.url }}" class="img-rounded" width="{{ post.width_img }}" height="{{ post.height_img }}">
+		</div>
+		{{ post.post_short|safe }}
+		<a href="{% url 'content:post' post.id %}">Показать полностью...</a>
+		<hr>
+	{% endfor %}
+	<div class="pag">
+		{% load bootstrap3 %}
+		{% bootstrap_pagination page_obj %}
+	</div>
+</div>
+{% endblock %}

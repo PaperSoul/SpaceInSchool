@@ -1,27 +1,14 @@
-{% extends 'content/base.html' %}
-{% block questions-active %}
-active
-{% endblock %}
+{% extends 'content/base.html '%}
+{% block title %}Вопросы{% endblock %}
+{% block questions-active %}active{% endblock %}
 {% block body %}
-<div class="row">
-
-<div class="col-sm-8 blog-main">
-
-  <div class="blog-post">
-    <h2 class="blog-post-title">Вопросы от школьников:</h2>
-    <ul>
-    	{% for question in all_questions %}
-    	<li><a href="{% url 'content:question-detail' question.id %}">{{ question.question_text }}</a></li>
-    	{% endfor %}
-    </ul>
-  </div>
-
-</div><!-- /.blog-main -->
-
-<div class="col-sm-3 col-sm-offset-1 blog-sidebar">
-  <div class="sidebar-module sidebar-module-inset">
-    <h4>About</h4>
-    <p>Etiam porta <em>sem malesuada magna</em> mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>
-  </div>
-</div><!-- /.blog-sidebar -->
+	<div class="question">
+		{% for question in all_questions %}
+			<h1><a href="{% url 'content:question-detail' question.id %}">{{ question.question_text }}</a></h1>
+		{% endfor %}
+	</div>
+	<div class="pag">
+		{% load bootstrap3 %}
+		{% bootstrap_pagination page_obj %}
+	</div>
 {% endblock %}

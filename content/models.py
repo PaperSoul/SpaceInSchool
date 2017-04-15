@@ -7,6 +7,7 @@ class Posts(models.Model):
 		verbose_name_plural = 'Статьи'
 
 	title = models.CharField(max_length=500, verbose_name='Заголовок')
+	post_short = models.TextField(default="")
 	post_text = models.TextField(verbose_name='Текст статьи')
 	pub_date = models.DateTimeField(default=timezone.now, verbose_name='Время публикации')
 	post_img = models.FileField(upload_to='posts/', verbose_name='Картинка статьи')

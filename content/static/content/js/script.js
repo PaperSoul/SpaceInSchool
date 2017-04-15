@@ -1,0 +1,1 @@
+console.log("This website created by Artem Filimonov|https://vk.com/id150846536");
